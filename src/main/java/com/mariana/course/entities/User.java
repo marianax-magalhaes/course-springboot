@@ -1,19 +1,18 @@
 package com.mariana.course.entities;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
+
+@Entity
+@Table(name="tb_user")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
 public class User implements Serializable {
 
     @Id
@@ -24,4 +23,19 @@ public class User implements Serializable {
     private String email;
     private String phone;
     private String password;
+
+    @OneToMany(mappedBy="customer")
+    private List<Order> orders = new ArrayList<>();
+
+//    nao sei pq mas parou de funcionar o construtor do lombok
+    public User(Long id, String name, String email, String phone, String password) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.phone = phone;
+        this.password = password;
+    }
+
+    public User(Object o, String maria_brown, String s, String s1, String s2) {
+    }
 }
