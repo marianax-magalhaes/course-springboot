@@ -20,6 +20,8 @@ public class Order implements Serializable {
 
     private Instant moment;
 
+    private OrderStatus orderStatus;
+
     @ManyToOne
     @JoinColumn(name="client_id")
     private User customer;
