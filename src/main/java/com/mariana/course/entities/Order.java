@@ -20,15 +20,26 @@ public class Order implements Serializable {
 
     private Instant moment;
 
-//    private OrderStatus orderStatus;
+    private Integer orderStatus;
 
     @ManyToOne
     @JoinColumn(name="client_id")
     private User customer;
 
-    public Order(Long id, Instant moment, User customer) {
+    public OrderStatus getOrderStatus(){
+        return OrderStatus.valueOf(orderStatus);
+    }
+
+    public void setOrderStatus(OrderStatus orderStatus){
+        if(orderStatus !=null){
+            this.orderStatus = orderStatus.getCode();
+        }
+    }
+
+    public Order(Long id, Instant moment, User customer, OrderStatus orderStatus) {
         this.id = id;
         this.moment = moment;
         this.customer = customer;
+        setOrderStatus(orderStatus);
     }
 }
