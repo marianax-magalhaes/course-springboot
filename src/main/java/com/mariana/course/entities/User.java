@@ -35,7 +35,4 @@ public class User implements Serializable {
         this.phone = phone;
         this.password = password;
     }
-
-    public User(Object o, String maria_brown, String s, String s1, String s2) {
-    }
 }
