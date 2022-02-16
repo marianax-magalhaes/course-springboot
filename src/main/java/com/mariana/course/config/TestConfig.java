@@ -1,8 +1,10 @@
 package com.mariana.course.config;
 
+import com.mariana.course.entities.Category;
 import com.mariana.course.entities.Order;
 import com.mariana.course.entities.OrderStatus;
 import com.mariana.course.entities.User;
+import com.mariana.course.repositories.CategoryRepository;
 import com.mariana.course.repositories.OrderRepository;
 import com.mariana.course.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +25,9 @@ public class TestConfig implements CommandLineRunner {
     @Autowired
     private OrderRepository orderRepo;
 
+    @Autowired
+    private CategoryRepository categoryRepo;
+
     @Override
     public void run(String... args) throws Exception {
         User u1 = new User(null, "Maria Brown", "maria@gmail.com", "33334444", "123456");
@@ -32,7 +37,13 @@ public class TestConfig implements CommandLineRunner {
         Order o2 = new Order(null, Instant.parse("2022-01-15T12:58:07Z"), u1, OrderStatus.WAITING_PAYMENT);
         Order o3 = new Order(null, Instant.parse("2021-12-20T09:15:07Z"), u2, OrderStatus.DELIVERED);
 
+        Category cat1 = new Category(null, "Eletronics");
+        Category cat2 = new Category(null, "Books");
+        Category cat3 = new Category(null, "Computers");
+
+
         userRepo.saveAll(Arrays.asList(u1,u2));
         orderRepo.saveAll(Arrays.asList(o1,o2,o3));
+        categoryRepo.saveAll(Arrays.asList(cat1, cat2, cat3));
     }
 }
