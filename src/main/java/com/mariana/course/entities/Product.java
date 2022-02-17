@@ -1,5 +1,6 @@
 package com.mariana.course.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -32,6 +33,7 @@ public class Product implements Serializable {
     @OneToMany(mappedBy="id.product")
     private Set<OrderItem> items = new HashSet<>();
 
+    @JsonIgnore
     public Set<Order> getOrders(){
         Set<Order> set = new HashSet<>();
         for(OrderItem x : items){
