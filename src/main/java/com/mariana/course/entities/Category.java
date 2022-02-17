@@ -1,5 +1,7 @@
 package com.mariana.course.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,6 +22,7 @@ public class Category implements Serializable {
     private String name;
 
 //    mapped by nome da coleção
+    @JsonIgnore
     @ManyToMany(mappedBy="categories")
     private Set<Product> products = new HashSet<>();
 
