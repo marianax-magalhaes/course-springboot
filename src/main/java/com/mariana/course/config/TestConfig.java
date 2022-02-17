@@ -1,11 +1,9 @@
 package com.mariana.course.config;
 
-import com.mariana.course.entities.Category;
-import com.mariana.course.entities.Order;
-import com.mariana.course.entities.OrderStatus;
-import com.mariana.course.entities.User;
+import com.mariana.course.entities.*;
 import com.mariana.course.repositories.CategoryRepository;
 import com.mariana.course.repositories.OrderRepository;
+import com.mariana.course.repositories.ProductRepository;
 import com.mariana.course.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -28,6 +26,9 @@ public class TestConfig implements CommandLineRunner {
     @Autowired
     private CategoryRepository categoryRepo;
 
+    @Autowired
+    private ProductRepository prodRepo;
+
     @Override
     public void run(String... args) throws Exception {
         User u1 = new User(null, "Maria Brown", "maria@gmail.com", "33334444", "123456");
@@ -41,9 +42,15 @@ public class TestConfig implements CommandLineRunner {
         Category cat2 = new Category(null, "Books");
         Category cat3 = new Category(null, "Computers");
 
+        Product p1 = new Product(null, "Harry Potter", "descrição", 20.00, "");
+        Product p2 = new Product(null, "Dell", "descrição", 21.00, "");
+        Product p3 = new Product(null, "TV Samsung", "descrição", 22.00, "");
+        Product p4 = new Product(null, "Kindle", "descrição", 23.00, "");
+
 
         userRepo.saveAll(Arrays.asList(u1,u2));
         orderRepo.saveAll(Arrays.asList(o1,o2,o3));
         categoryRepo.saveAll(Arrays.asList(cat1, cat2, cat3));
+        prodRepo.saveAll(Arrays.asList(p1,p2,p3,p4));
     }
 }
