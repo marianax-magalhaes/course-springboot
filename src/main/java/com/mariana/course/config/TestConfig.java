@@ -47,6 +47,11 @@ public class TestConfig implements CommandLineRunner {
         Product p3 = new Product(null, "TV Samsung", "descrição", 22.00, "");
         Product p4 = new Product(null, "Kindle", "descrição", 23.00, "");
 
+        p1.getCategories().add(cat2);
+        p2.getCategories().add(cat1);
+        p2.getCategories().add(cat3);
+        p3.getCategories().add(cat1);
+        p4.getCategories().add(cat1);
 
         userRepo.saveAll(Arrays.asList(u1,u2));
         orderRepo.saveAll(Arrays.asList(o1,o2,o3));
