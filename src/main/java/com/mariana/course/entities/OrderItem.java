@@ -42,4 +42,8 @@ public class OrderItem {
     public void setOrder(Product product){
         id.setProduct(product);
     }
+
+    public Double getSubTotal(){
+        return price*quantity;
+    }
 }
